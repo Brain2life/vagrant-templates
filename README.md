@@ -47,6 +47,21 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
     - Host Key Verification Strategy: Non verifying Verification Strategy
 6. In Advanced section of Node agent config for `JavaPath` specify `/usr/bin/java` value
 
+## Git configuration:
+1. Ensure that [Git plugin](https://plugins.jenkins.io/git/) is installed
+2. Ensure that `git` is installed on master and worker nodes
+3. Configure path to the `git` executable on master node:
+    - Jenkins --> Manage Jenkins--> Global Tool Configuration --> Git --> specify executable path
+    ![](https://i.imgur.com/3b9GS4O.png)
+    - To get path use `which git` command
+    - To install git on CentOS7 use `sudo yum install git`
+4. Configure path on each worker node:
+    - Node --> Configure --> Tool locations:
+    ![](https://i.imgur.com/RoBqyK4.png)
+5. Links:
+    - [[Solution] Git Clone Error: java.io.IOException: error=2, No such file or directory](https://scriptcrunch.com/git-clone-error-java-io-ioexception/)
+    - [Jenkins giving error while cloning from gitHub](https://stackoverflow.com/questions/12202078/jenkins-giving-error-while-cloning-from-github)
+
 ## Reference:
 1. [Vagrant boxes](https://app.vagrantup.com/boxes/search)
 2. [Jenkins + Vagrant: Automation, pt 1](https://faun.pub/jenkins-vagrant-automation-pt-1-adae0bdb69d6)
