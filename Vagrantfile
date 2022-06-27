@@ -1,4 +1,10 @@
 Vagrant.configure("2") do |config|
+
+  # VM machine configuration
+  config.vm.provider :virtualbox do |v|
+    v.customize ["modifyvm", :id, "--memory", 2048]
+    # v.customize ["modifyvm", :id, "--cpus", 2]
+  end
   
   # Jenkins master node
   config.vm.define "master" do |master|
