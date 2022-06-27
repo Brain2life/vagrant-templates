@@ -31,6 +31,12 @@ vagrant destroy
 ```
 For more info check the following article: [Quick startup with Vagrant](https://brain2life.hashnode.dev/quick-startup-with-vagrant)
 
+## VM machine resource configuration:
+1. VM configuration is done `v.customize` option
+2. VMs use 2GB and 2 CPU
+2. Links:
+    - [How do I increase the RAM and set up host-only networking in Vagrant?](https://stackoverflow.com/questions/12308149/how-do-i-increase-the-ram-and-set-up-host-only-networking-in-vagrant)
+
 ## Jenkins configuration:
 1. Configure Jenkins master node at: [http://localhost:8080](http://localhost:8080)
 2. The initial Admin password for unlocking Jenkins can be found on master node at:
