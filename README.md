@@ -1,4 +1,14 @@
 # Simple Jenkins server setup with remote build agents
+
+## Table of content:
+1. [Lab environment setup](#lab-environment-setup)
+2. [Overview](#overview)
+3. [Usage](#usage)
+4. [VM machine resource configuration](#vm-machine-resource-configuration)
+5. [Jenkins configuration](#jenkins-configuration)
+6. [Git configuration](#git-configuration)
+7. [Reference](#reference)
+
 ## Lab environment setup:  
 ![](./img/jenkins-lab.png)
 
@@ -32,8 +42,8 @@ vagrant destroy
 For more info check the following article: [Quick startup with Vagrant](https://brain2life.hashnode.dev/quick-startup-with-vagrant)
 
 ## VM machine resource configuration:
-1. VM configuration is done `v.customize` option
-2. VMs use 2GB and 2 CPU
+1. VM configuration is done with `v.customize` option
+2. VMs use 2GB and 2CPU
 2. Links:
     - [How do I increase the RAM and set up host-only networking in Vagrant?](https://stackoverflow.com/questions/12308149/how-do-i-increase-the-ram-and-set-up-host-only-networking-in-vagrant)
 
