@@ -14,7 +14,7 @@
 
 ## Overview:
 0. Tested on host machine: Ubuntu 20.04, Vagrant 2.2.19, VirtualBox 6.1.34r150636
-1. Jenkins master node: CentOS7, IP: `192.168.56.10`, hostname: `master`, installed Jenkins verion 2.356
+1. Jenkins master node: CentOS7, IP: `192.168.56.10`, hostname: `master`, installed Jenkins version 2.356
 2. Build agent (worker nodes): Ubuntu 18.04, IP: `192.168.56.11-[12]`, hostname: `worker1-[2]` 
 3. This setup requires manual config of Jenkins server to your need through UI at [http://localhost:8080](http://localhost:8080)
 4. Configuration of the Nodes is done via bash scripts in `provision` folder
