@@ -35,7 +35,11 @@ vagrant global-status --prune
 ```shell
 vagrant ssh [vm_name]
 ```
-3. To delete environment:
+3. To gracefully stop VMs use:
+```shell
+vagrant halt
+```
+4. To delete environment:
 ```shell
 vagrant destroy
 ```
