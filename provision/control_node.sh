@@ -17,6 +17,7 @@ sudo service sshd restart
 echo "Configuring Ansible files ..."
 cd /home/vagrant/
 mkdir ansible
+sudo chown vagrant ansible/
 touch /home/vagrant/ansible/hosts.txt
 cat <<EOF > /home/vagrant/ansible/hosts.txt
 [staging_servers]
