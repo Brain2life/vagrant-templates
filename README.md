@@ -12,14 +12,12 @@
 ![](./img/jenkins-lab.png)
 
 ## Overview:
-0. Tested on host machine: Ubuntu 20.04, Vagrant 2.2.19, VirtualBox 6.1.34r150636
-1. Jenkins master node: CentOS7, IP: `192.168.56.10`, hostname: `master`, installed Jenkins version 2.356
-2. Build agent (worker nodes): Ubuntu 18.04, IP: `192.168.56.11-[12]`, hostname: `worker1-[2]` 
-3. This setup requires manual config of Jenkins server to your need through UI at [http://localhost:8080](http://localhost:8080)
-4. Configuration of the Nodes is done via bash scripts in `provision` folder
-5. [CentOS7 box](https://app.vagrantup.com/centos/boxes/7)
-6. [Ubuntu 18.04 box](https://app.vagrantup.com/ubuntu/boxes/bionic64)
-7. All three nodes in private network `192.168.56.1/21` with access to the Internet via NAT
+0. Tested on host machine: Ubuntu 20.04, Vagrant 2.3.0, VirtualBox 6.1.34r150636
+1. Ansible control node: CentOS7, IP: `192.168.56.10`, hostname: `control`
+2. Worker nodes: CentOS7, IP: `192.168.56.11-[12]`, hostname: `worker1-[2]` 
+3. Configuration of the Nodes is done via bash scripts in `provision` folder
+4. [CentOS7 box](https://app.vagrantup.com/centos/boxes/7)
+5. All three nodes in private network `192.168.56.1/21` with access to the Internet via NAT
 
 ## Usage:
 1. Deploy the environment:
@@ -57,9 +55,19 @@ ssh 192.168.56.12
 ssh 192.168.56.13
 ```
 
+## Test connectivity to worker nodes:
+To test connectivity from control node to your worker node, in `ansible` folder on control node run:
+```shell
+ansible -i hosts.txt all --ask-pass -m ping
+```
+Enter password `vagrant`. Should return `SUCCESS` message
+
 ## Reference:
 1. [Vagrant boxes](https://app.vagrantup.com/boxes/search)
 2. [Installing Ansible on Fedora or CentOS](https://docs.ansible.com/ansible/latest/installation_guide/installation_distros.html#installing-ansible-on-fedora-or-centos)
 3. [Multiple Vagrant VMs in One Vagrantfile](https://www.thisprogrammingthing.com/2015/multiple-vagrant-vms-in-one-vagrantfile/)
 4. [Automatically Accept SSH Fingerprint](https://www.putorius.net/automatically-accept-ssh-fingerprint.html)
 5. [How to ssh between a cluster of Vagrant guest VMs](https://superuser.com/questions/671191/how-to-ssh-between-a-cluster-of-vagrant-guest-vms)
+6. [How to Use SSH Password-Based Login in Ansible Using sshpass](https://linuxhint.com/how_to_use_sshpass_to_login_for_ansible/)
+7. [Ansible connection methods and details](https://docs.ansible.com/ansible/latest/user_guide/connection_details.html#host-key-checking)
+8. [Is there a way to prevent sed from interpreting the replacement string?](https://unix.stackexchange.com/questions/255789/is-there-a-way-to-prevent-sed-from-interpreting-the-replacement-string)
