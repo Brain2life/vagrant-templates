@@ -13,21 +13,27 @@ Vagrant.configure("2") do |config|
     control.vm.provision "shell" do |s|
       s.path = "./provision/control_node.sh"
     end
-    control.vm.network :private_network, ip: "192.168.56.11"
+    control.vm.network :private_network, ip: "192.168.56.10"
   end
 
   # Ansible worker node 1
   config.vm.define "ansible-worker1" do |worker1|
     worker1.vm.box = "centos/7"
-    worker1.vm.hostname = "worker1"
-    worker1.vm.network :private_network, ip: "192.168.56.12"
+    worker1.vm.hostname = "worker1" 
+    worker1.vm.network :private_network, ip: "192.168.56.11"
+    worker1.vm.provision "shell" do |s|
+      s.path = "./provision/worker_node.sh"
+    end
   end
 
   # Ansible worker node 2
   config.vm.define "ansible-worker2" do |worker2|
     worker2.vm.box = "centos/7"
     worker2.vm.hostname = "worker2"
-    worker2.vm.network :private_network, ip: "192.168.56.13"
-  end 
+    worker2.vm.network :private_network, ip: "192.168.56.12"
+    worker2.vm.provision "shell" do |s|
+      s.path = "./provision/worker_node.sh"
+    end
+  end  
 
 end
