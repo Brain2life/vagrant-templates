@@ -10,6 +10,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "ansible-control" do |control|
     control.vm.box = "centos/7"
     control.vm.hostname = "control"
+    control.vbguest.installer_options = { allow_kernel_upgrade: true }
     control.vm.provision "shell" do |s|
       s.path = "./provision/control_node.sh"
     end
@@ -20,6 +21,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "ansible-worker1" do |worker1|
     worker1.vm.box = "centos/7"
     worker1.vm.hostname = "worker1" 
+    worker1.vbguest.installer_options = { allow_kernel_upgrade: true }
     worker1.vm.network :private_network, ip: "192.168.56.11"
     worker1.vm.provision "shell" do |s|
       s.path = "./provision/worker_node.sh"
@@ -30,6 +32,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "ansible-worker2" do |worker2|
     worker2.vm.box = "centos/7"
     worker2.vm.hostname = "worker2"
+    worker2.vbguest.installer_options = { allow_kernel_upgrade: true }
     worker2.vm.network :private_network, ip: "192.168.56.12"
     worker2.vm.provision "shell" do |s|
       s.path = "./provision/worker_node.sh"
