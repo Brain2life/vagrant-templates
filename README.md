@@ -41,12 +41,16 @@ vagrant halt
 ```shell
 vagrant destroy
 ```
+5. To avoid errors related with vbguest install required plugin:
+```shell
+vagrant plugin install vagrant-vbguest
+```
 For more info check the following article: [Quick startup with Vagrant](https://brain2life.hashnode.dev/quick-startup-with-vagrant)
 
 ## VM machine resource configuration:
 1. VM configuration is done with `v.customize` option
 2. VMs use 2GB and 2CPU
-2. Links:
+3. Links:
     - [How do I increase the RAM and set up host-only networking in Vagrant?](https://stackoverflow.com/questions/12308149/how-do-i-increase-the-ram-and-set-up-host-only-networking-in-vagrant)
 
 ## Test connectivity to worker nodes:
