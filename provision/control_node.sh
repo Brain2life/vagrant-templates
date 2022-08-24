@@ -59,6 +59,25 @@ cat <<EOF > /home/vagrant/ansible/playbook_install_apache.yml
   - name: Start Apache and enable on the boot
     service: name=httpd state=started enabled=yes 
 EOF
+cd /home/vagrant/ansible
+mkdir app
+sudo chown vagrant app/
+touch app/index.html
+cat <<EOF > /home/vagrant/ansible/app/index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Hello, World! This is my website! Created by Maxat Akbanov
+</body>
+</html>
+EOF
+
 
 echo "Disabling host_key_checking ..."
 sudo sed -i '/host_key_checking = False/s/^#//g' /etc/ansible/ansible.cfg
