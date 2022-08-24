@@ -59,6 +59,32 @@ cat <<EOF > /home/vagrant/ansible/playbook_install_apache.yml
   - name: Start Apache and enable on the boot
     service: name=httpd state=started enabled=yes 
 EOF
+touch /home/vagrant/ansible/playbook_upload_webpage.yml
+cat <<EOF > /home/vagrant/ansible/playbook_upload_webpage.yml
+---
+- name: Install Apache and upload web page index.html
+  hosts: all
+  become: yes
+
+  vars:
+    source_file: ./app/index.html
+    dest_file: /var/www/html
+
+  tasks:
+  - name: Install Apache Web Server
+    yum: name=httpd state=latest
+
+  - name: Copy web page to worker nodes
+    copy: src={{ source_file }} dest={{ dest_file }} mode=0555
+    notify: Restart Apache
+
+  - name: Start webserver and enable on the boot
+    service: name=httpd state=started enabled=yes
+
+  handlers:
+  - name: Restart Apache
+    service: name=httpd state=restarted
+EOF
 cd /home/vagrant/ansible
 mkdir app
 sudo chown vagrant app/
