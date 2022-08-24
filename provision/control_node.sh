@@ -14,6 +14,9 @@ echo "Enabling SSH password authentication ..."
 sudo sed -re 's/^(PasswordAuthentication)([[:space:]]+)no/\1\2yes/' -i.`date -I` /etc/ssh/sshd_config
 sudo service sshd restart
 
+echo "Installing vim editor ..."
+sudo yum install vim-enhanced -y
+
 echo "Configuring Ansible files ..."
 cd /home/vagrant/
 mkdir ansible
