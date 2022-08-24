@@ -33,6 +33,32 @@ cat <<EOF > /home/vagrant/ansible/ansible.cfg
 host_key_checking = false;
 inventory = ./hosts.txt  ;
 EOF
+touch /home/vagrant/ansible/playbook_test_connection.yml
+cat <<EOF > /home/vagrant/ansible/playbook_test_connection.yml
+---
+- name: Test connection to servers
+  hosts: all
+  become: yes
+  
+  tasks:
+
+  - name: Ping servers
+    ping:
+EOF
+touch /home/vagrant/ansible/playbook_install_apache.yml
+cat <<EOF > /home/vagrant/ansible/playbook_install_apache.yml
+---
+- name: Install default Apache Web Server
+  hosts: all
+  become: yes
+
+  tasks:
+  - name: Install Apache Web Server
+    yum: name=httpd state=latest
+    
+  - name: Start Apache and enable on the boot
+    service: name=httpd state=started enabled=yes 
+EOF
 
 echo "Disabling host_key_checking ..."
 sudo sed -i '/host_key_checking = False/s/^#//g' /etc/ansible/ansible.cfg
