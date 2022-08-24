@@ -7,7 +7,8 @@
 4. [VM machine resource configuration](#vm-machine-resource-configuration)
 5. [Test connectivity to worker nodes](#test-connectivity-to-worker-nodes)
 6. [Ad-hoc Ansible commands](#ad-hoc-ansible-commands)
-7. [Reference](#reference)
+8. [Ansible playbook](#ansible-playbook)
+9. [Reference](#reference)
 
 ## Lab environment setup:  
 ![](./img/jenkins-lab.png)
@@ -110,6 +111,21 @@ ansible -i hosts.txt all --ask-pass -m service -a "name=httpd state=started enab
 ```shell
 ansible-doc -l
 ```
+
+## Ansible playbook
+1. To run playbook use:
+```shell
+ansible-playbook [playbook_file] --ask-pass
+```
+All preliminary ansible configs must be set in the `ansible.cfg` file
+2. In `ansible` dir of the control node there are three playbooks:
+```shell
+playbook_install_apache.yml
+playbook_test_connection.yml
+playbook_upload_webpage.yml
+```
+First installs Apache web server. Second test connection to the worker nodes. Third uploads the webpage to the Apache server.
+
 
 ## Reference:
 1. [Vagrant boxes](https://app.vagrantup.com/boxes/search)
