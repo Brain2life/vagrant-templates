@@ -27,6 +27,12 @@ cat <<EOF > /home/vagrant/ansible/hosts.txt
 worker1 ansible_host=192.168.56.11 ansible_user=vagrant ansible_pass=vagrant
 worker2 ansible_host=192.168.56.12 ansible_user=vagrant ansible_pass=vagrant
 EOF
+touch /home/vagrant/ansible/ansible.cfg
+cat <<EOF > /home/vagrant/ansible/ansible.cfg
+[defaults]
+host_key_checking = false;
+inventory = ./hosts.txt  ;
+EOF
 
 echo "Disabling host_key_checking ..."
 sudo sed -i '/host_key_checking = False/s/^#//g' /etc/ansible/ansible.cfg
