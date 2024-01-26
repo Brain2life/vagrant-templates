@@ -19,6 +19,7 @@ Vagrant.configure("2") do |config|
     # Provisioning the VM - install Docker daemon with root permissions for docker group.
     # Learn more at: https://github.com/docker/docker-install
     ubuntu.vm.provision "shell", inline: <<-SHELL
+        sudo apt install net-tools
         curl -fsSL https://get.docker.com -o get-docker.sh
         sh get-docker.sh
         sudo usermod -aG docker vagrant
